@@ -76,6 +76,6 @@ public class UsersControllerTest {
     mvc.perform(getRequest)
       .andExpect(status().is2xxSuccessful())
       .andExpect(jsonPath("$[0].id", notNullValue()))
-      .andExpect(jsonPath("$[0].email", equalTo("joe2@@example.com")));
+      .andExpect(jsonPath("$[0].email", equalTo("joe2@example.com")));
   }
 }
