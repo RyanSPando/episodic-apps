@@ -1,4 +1,4 @@
-package com.example.users;
+package com.example.shows;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -23,18 +23,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureMockMvc(secure = false)
-public class UsersControllerTest {
+@AutoConfigureMockMvc
 
-  @Autowired
-  UsersRepository usersRepository;
+public class ShowsControllerTest {
 
   @Autowired
   MockMvc mvc;
 
+  @Autowired
+  ShowsRepository showsRepository;
+
   @Before
   public void setup() {
-    usersRepository.deleteAll();
+    showsRepository.deleteAll();
   }
 
   @Test
@@ -42,7 +43,7 @@ public class UsersControllerTest {
 
     Map<String, Object> payload = new HashMap<String, Object>() {
       {
-        put("email", "joe@example.com");
+        put("name", "joe");
       }
     };
 
@@ -50,7 +51,7 @@ public class UsersControllerTest {
 
     String json = mapper.writeValueAsString(payload);
 
-    MockHttpServletRequestBuilder request = post("/users")
+    MockHttpServletRequestBuilder request = post("/shows")
       .contentType(MediaType.APPLICATION_JSON)
       .accept(MediaType.APPLICATION_JSON)
       .content(json);
@@ -58,24 +59,25 @@ public class UsersControllerTest {
     mvc
       .perform(request)
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.id", notNullValue()));
+      .andExpect(jsonPath("$.id", notNullValue()))
+      .andExpect(jsonPath("$.name", equalTo("joe")));
   }
 
   @Test
   public void userController_getsAUser() throws Exception {
 
-    User user = new User();
-    user.setEmail("joe2@example.com");
+    Show user = new Show();
+    user.setName("joe2");
 
-    usersRepository.save(user);
+    showsRepository.save(user);
 
-    MockHttpServletRequestBuilder getRequest = get("/users")
+    MockHttpServletRequestBuilder getRequest = get("/shows")
       .contentType(MediaType.APPLICATION_JSON)
       .accept(MediaType.APPLICATION_JSON);
 
     mvc.perform(getRequest)
       .andExpect(status().is2xxSuccessful())
       .andExpect(jsonPath("$[0].id", notNullValue()))
-      .andExpect(jsonPath("$[0].email", equalTo("joe2@@example.com")));
+      .andExpect(jsonPath("$[0].name", equalTo("joe2")));
   }
 }
