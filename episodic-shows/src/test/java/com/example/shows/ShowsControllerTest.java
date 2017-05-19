@@ -39,7 +39,7 @@ public class ShowsControllerTest {
   }
 
   @Test
-  public void userController_createsUser() throws Exception {
+  public void showsController_createsShow() throws Exception {
 
     Map<String, Object> payload = new HashMap<String, Object>() {
       {
@@ -64,12 +64,12 @@ public class ShowsControllerTest {
   }
 
   @Test
-  public void userController_getsAUser() throws Exception {
+  public void showsController_getsAShow() throws Exception {
 
-    Show user = new Show();
-    user.setName("joe2");
+    Show show = new Show();
+    show.setName("joe2");
 
-    showsRepository.save(user);
+    showsRepository.save(show);
 
     MockHttpServletRequestBuilder getRequest = get("/shows")
       .contentType(MediaType.APPLICATION_JSON)
