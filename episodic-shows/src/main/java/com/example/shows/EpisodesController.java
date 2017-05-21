@@ -7,7 +7,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @RestController
-@RequestMapping("/shows/{show_id}/episodes")
+@RequestMapping("/shows/{showId}/episodes")
 public class EpisodesController {
   private final EpisodesRepository episodesRepository;
 
@@ -16,16 +16,15 @@ public class EpisodesController {
   }
 
   @GetMapping
-  public List<EpisodeResponse> getEpisode(@PathVariable Long show_id) {
+  public List<EpisodeResponse> getEpisode(@PathVariable Long showId) {
 
-   return this.episodesRepository.findByShowId(show_id).stream()
+   return this.episodesRepository.findByShowId(showId).stream()
      .map(EpisodeResponse::new).collect(toList());
   }
 
   @PostMapping
-  public EpisodeResponse makeEpisode(@PathVariable Long show_id, @RequestBody Episode newEpisode) {
-    newEpisode.setShow_id(show_id);
-    System.out.println(" = " + newEpisode);
+  public EpisodeResponse makeEpisode(@PathVariable Long showId, @RequestBody Episode newEpisode) {
+    newEpisode.setShowId(showId);
 
     return new EpisodeResponse(this.episodesRepository.save(newEpisode));
   }

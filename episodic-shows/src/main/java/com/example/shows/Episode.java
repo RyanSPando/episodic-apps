@@ -13,8 +13,10 @@ public class Episode {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
-  private long show_id;
+  private Long id;
+  private Long showId;
   private int seasonNumber;
   private int episodeNumber;
+
+
 }

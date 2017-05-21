@@ -35,11 +35,11 @@ public class EpisodesControllerTest {
   ShowsRepository showsRepository;
 
   @Autowired
-  EpisodesRepository episodeRepository;
+  EpisodesRepository episodesRepository;
 
   @Before
   public void setup() {
-    episodeRepository.deleteAll();
+    episodesRepository.deleteAll();
     showsRepository.deleteAll();
 
     Show show = new Show();
@@ -47,18 +47,18 @@ public class EpisodesControllerTest {
 
     Show dbShow = showsRepository.save(show);
 
-    showId = dbShow.getId();
+     showId = dbShow.getId();
   }
 
   @Test
   public void episodesController_getsEpisodes() throws Exception {
 
     Episode episode = new Episode();
-    episode.setShow_id(showId);
+    episode.setShowId(showId);
     episode.setEpisodeNumber(2);
     episode.setSeasonNumber(3);
 
-    episodeRepository.save(episode);
+    episodesRepository.save(episode);
 
     MockHttpServletRequestBuilder getRequest = get("/shows/" + showId.toString() + "/episodes")
       .contentType(MediaType.APPLICATION_JSON)
@@ -85,7 +85,6 @@ public class EpisodesControllerTest {
     ObjectMapper mapper = new ObjectMapper();
 
     String json = mapper.writeValueAsString(payload);
-    System.out.println("json = " + json);
 
     MockHttpServletRequestBuilder getRequest = post("/shows/" + showId.toString() + "/episodes")
       .contentType(MediaType.APPLICATION_JSON)
@@ -98,6 +97,5 @@ public class EpisodesControllerTest {
       .andExpect(jsonPath("$.episodeNumber", equalTo(2)))
       .andExpect(jsonPath("$.seasonNumber", equalTo(3)))
       .andExpect(jsonPath("$.title", equalTo("S3 E2")));
-
   }
 }

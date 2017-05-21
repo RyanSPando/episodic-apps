@@ -3,5 +3,5 @@ create table episodes (
     show_id bigint not null,
     season_number int not null,
     episode_number int not null,
-    FOREIGN KEY (show_id) REFERENCES shows(id)
+    FOREIGN KEY (show_id) REFERENCES shows(id) ON DELETE CASCADE
 )
