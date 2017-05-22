@@ -261,7 +261,7 @@ public class EventsControllerTest {
       mvc.perform(request);
     }
 
-    MockHttpServletRequestBuilder request = get("/")
+    MockHttpServletRequestBuilder request = get("/recent")
       .accept(MediaType.APPLICATION_JSON);
 
     mvc.perform(request)

@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
 public class EventsController {
   private final EventsRepository eventsRepository;
 
@@ -13,12 +12,12 @@ public class EventsController {
     this.eventsRepository = eventsRepository;
   }
 
-  @PostMapping
+  @PostMapping("/")
   public Event addEvent(@RequestBody Event event) {
     return eventsRepository.save(event);
   }
 
-  @GetMapping
+  @GetMapping("/recent")
   public List<Event> getEvents() {
     return eventsRepository.findFirst20ByOrderByCreatedAtDesc();
   }

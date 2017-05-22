@@ -4,7 +4,7 @@ applications:
   memory: 512M
   disk_quota: 1024M
   routes:
-  - route: episodic-events.cfapps.io
+  - route: episodic-events-undominated-subarea.cfapps.io/
   services:
   - episodic-events-db
   stack: cflinuxfs2
