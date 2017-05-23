@@ -1,9 +1,11 @@
-package com.example.users;
+package com.example.viewings;
 
 import com.example.shows.Episode;
 import com.example.shows.EpisodesRepository;
 import com.example.shows.Show;
 import com.example.shows.ShowsRepository;
+import com.example.users.User;
+import com.example.users.UsersRepository;
 import com.example.viewings.Viewing;
 import com.example.viewings.ViewingsRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ViewingsControllerTest {
+public class ViewingsControllerTest extends MyTestBaseClass {
   private Long userId;
   private Long showId;
   private Long episodeId;
