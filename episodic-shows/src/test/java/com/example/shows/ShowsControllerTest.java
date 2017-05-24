@@ -56,8 +56,7 @@ public class ShowsControllerTest {
       .accept(MediaType.APPLICATION_JSON)
       .content(json);
 
-    mvc
-      .perform(request)
+    mvc.perform(request)
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.id", notNullValue()))
       .andExpect(jsonPath("$.name", equalTo("joe")));

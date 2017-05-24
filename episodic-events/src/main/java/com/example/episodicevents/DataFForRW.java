@@ -7,4 +7,5 @@ public class DataFForRW {
   private Long startOffset;
   private Long endOffset;
   private Long speed;
+
 }

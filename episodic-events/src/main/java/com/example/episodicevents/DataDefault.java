@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class DataDefault {
-  private Long offset;
+  private int offset;
 }

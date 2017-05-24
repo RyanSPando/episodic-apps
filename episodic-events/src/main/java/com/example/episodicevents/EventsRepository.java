@@ -1,6 +1,8 @@
 package com.example.episodicevents;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
