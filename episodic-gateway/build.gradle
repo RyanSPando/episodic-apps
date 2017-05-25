@@ -38,6 +38,7 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
+	compile('org.springframework.cloud:spring-cloud-starter-zuul')
 }
 
 dependencyManagement {

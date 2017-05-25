@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ViewingsControllerTest extends MyTestBaseClass {
+public class ViewingsControllerTest  {
   private Long userId;
   private Long showId;
   private Long episodeId;
